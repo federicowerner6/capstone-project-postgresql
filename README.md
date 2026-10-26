@@ -1,6 +1,6 @@
 # Proyecto Capstone: Análisis Exploratorio de Datos (EDA) en PostgreSQL
 
-Este proyecto consiste en el diseño, implementación y análisis exploratorio de datos de una base de datos relacional para un entorno transaccional (clientes, productos y pedidos), desarrollado como proyecto final utilizando **PostgreSQL** y **DBeaver**.
+Este proyecto consiste en el diseño, implementación y análisis exploratorio de datos de una base de datos relacional para un entorno transaccional (`clientes`, `productos` y `pedidos`), desarrollado como proyecto final utilizando **PostgreSQL** y **DBeaver**.
 
 ---
 
@@ -8,29 +8,27 @@ Este proyecto consiste en el diseño, implementación y análisis exploratorio d
 
 El repositorio contiene los siguientes archivos SQL:
 
-1. **`estructura.sql`**: 
+1. **`estructura.sql`**:
    - Creación de las tablas principales (`clientes`, `productos` y `pedidos`).
    - Definición de claves primarias (`PRIMARY KEY`), claves foráneas (`FOREIGN KEY`) y restricciones (`NOT NULL`, `UNIQUE`).
-   - Inserción de datos de prueba para simulación transaccional.
+   - Inserción de datos de prueba con valores nulos intencionales (`NULL`) para la validación y gestión de datos faltantes.
 
-2. **`analisis.sql`**: 
-   - Inspección general de tablas.
-   - Auditoría de datos y detección de valores nulos (`IS NULL`).
+2. **`analisis.sql`**:
+   - Auditoría de datos y detección de valores nulos.
+   - Tratamiento y limpieza de datos mediante funciones condicionales (`COALESCE`).
    - Consultas con cruce de tablas (`JOIN` / `LEFT JOIN`).
-   - Agregaciones y métricas de negocio (`SUM`, `COUNT`, `GROUP BY`, `ORDER BY`).
+   - Agregaciones y métricas de negocio (`SUM`, `COUNT`, `GROUP BY`, `ORDER BY`, `DATE_TRUNC`).
+   - Análisis avanzado con Window Functions (`RANK() OVER (...)`).
+
+3. **`README.md`**:
+   - Documentación ejecutiva del problema de negocio, guía de ejecución y conclusiones interpretadas para la toma de decisiones.
 
 ---
 
-## 📊 Principales Hallazgos del Análisis (EDA)
+## ⚙️ Instrucciones de Ejecución
 
-- **Auditoría de Datos:** Se identificaron registros con datos incompletos en productos y pedidos (precios y montos nulos), permitiendo evaluar la integridad de la base de datos.
-- **Rendimiento por Categoría:** La categoría **Tecnología** representa el mayor volumen de ventas totales dentro del sistema.
-- **Comportamiento de Clientes:** Se generó un ranking de clientes por volumen de gasto acumulado, destacando a los clientes con mayor frecuencia de compra y mayor ticket promedio.
+Para replicar el entorno de base de datos de manera local, sigue los siguientes pasos:
 
----
-
-## 🚀 Tecnologías Utilizadas
-
-- **Motor de Base de Datos:** PostgreSQL
-- **Cliente / IDE:** DBeaver
-- **Lenguaje:** SQL (DDL y DML)
+1. Crear la base de datos en PostgreSQL:
+   ```sql
+   CREATE DATABASE capstone_project;
